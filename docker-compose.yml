@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  laravel-pulse:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    container_name: laravel-pulse
+    restart: always
+    volumes:
+      - ./src:/app
+      - /app/vendor
+    networks:
+      - nginx_proxy-network
+    
+networks:
+  nginx_proxy-network:
+    external: true
